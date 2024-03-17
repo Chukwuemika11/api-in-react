@@ -1,0 +1,49 @@
+// const [catfact , setCatFact] = useState("");
+  // function fetchCatFact(){
+  //   Axios.get("https://catfact.ninja/fact").then(function(res){
+  //     setCatFact(res.data.fact);
+  //   });
+  // }
+
+  // useEffect(()=>{
+  //   fetchCatFact();
+  // },[]);
+  // const  [name, setName] = useState("");
+  // const [predictedAge, setPredictedAge] = useState(null);
+  // function username(event){
+  //    setName(event.target.value);
+  // }
+
+  //  function fetchData(){
+  //   Axios.get(`https://api.agify.io/?name=${name}`).then((res)=>{
+  //    setPredictedAge(res.data.age);
+  //   })
+  //  }
+
+  function fetchExcuse(excuse) {
+    const [generatedExcuse, setGeneratedExcuse] = useState("");
+    Axios.get(`https://excuser.herokuapp.com/v1/excuse/${excuse}/`).then(function(res){
+      setGeneratedExcuse(res.data[0].excuse);
+    })
+  }
+
+  return (
+    
+    <div>
+        {/* <button onClick={fetchCatFact}>Generate Cat Fact</button>
+        <p>{catfact}</p> */}
+        {/* <input onChange={username} type="text" placeholder='enter you name'/>
+        <button onClick={fetchData}>Pedict Age</button>
+        <h1>predicted Name: {predictedAge?.name} </h1>
+        <h1>predicted age: {predictedAge?.age} </h1>
+        <h1>predicted count: {predictedAge?.count} </h1> */}
+     <h1>Generate An excuse</h1>
+     <button onClick={()=>fetchExcuse("party")}>Party</button>
+     <button onClick={()=>fetchExcuse("family")}>Fmaily</button>
+     <button onClick={()=>fetchExcuse("office")}>Office</button>
+
+    <p>{generatedExcuse}</p>
+
+  
+    </div>
+  )
